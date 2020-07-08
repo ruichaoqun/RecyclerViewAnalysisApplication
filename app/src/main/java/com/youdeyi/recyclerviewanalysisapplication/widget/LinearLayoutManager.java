@@ -534,6 +534,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
         if (DEBUG) {
             Log.d(TAG, "is pre layout:" + state.isPreLayout());
         }
+        Log.w(TAG,"onLayoutChildren");
         if (mPendingSavedState != null || mPendingScrollPosition != RecyclerView.NO_POSITION) {
             if (state.getItemCount() == 0) {
                 removeAndRecycleAllViews(recycler);
@@ -1255,6 +1256,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
                     - mOrientationHelper.getEndAfterPadding();
 
         } else {
+            //获取第一个View
             final View child = getChildClosestToStart();
             mLayoutState.mExtraFillSpace += mOrientationHelper.getStartAfterPadding();
             mLayoutState.mItemDirection = mShouldReverseLayout ? LayoutState.ITEM_DIRECTION_TAIL
@@ -1387,9 +1389,11 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
             return 0;
         }
         ensureLayoutState();
+        //进入回收环节
         mLayoutState.mRecycle = true;
         final int layoutDirection = delta > 0 ? LayoutState.LAYOUT_END : LayoutState.LAYOUT_START;
         final int absDelta = Math.abs(delta);
+        //根据滑动距离更新LayoutState
         updateLayoutState(layoutDirection, absDelta, true, state);
         final int consumed = mLayoutState.mScrollingOffset
                 + fill(recycler, mLayoutState, state, false);
@@ -1579,6 +1583,7 @@ public class LinearLayoutManager extends RecyclerView.LayoutManager implements
             if (layoutState.mAvailable < 0) {
                 layoutState.mScrollingOffset += layoutState.mAvailable;
             }
+            //根据滑动方向以及滑动距离回收View
             recycleByLayoutState(recycler, layoutState);
         }
         int remainingSpace = layoutState.mAvailable + layoutState.mExtraFillSpace;

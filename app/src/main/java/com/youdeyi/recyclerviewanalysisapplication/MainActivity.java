@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mRecyclerView = findViewById(R.id.recycler_view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLayoutManager(new TestLayoutManager(5));
         mRecyclerView.setAdapter(new Adapter());
     }
 
@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            TextView pentagonView = new TextView(MainActivity.this);
+            PentagonView pentagonView = new PentagonView(MainActivity.this);
             pentagonView.setGravity(Gravity.CENTER);
-            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
             pentagonView.setLayoutParams(params);
             return new ViewHolder(pentagonView);
         }

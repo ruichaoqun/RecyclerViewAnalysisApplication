@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 
 import com.youdeyi.recyclerviewanalysisapplication.widget.RecyclerView;
 
+import java.util.HashMap;
+
 /**
  * @author Rui Chaoqun
  * @date :2020/7/8 11:50
@@ -19,6 +21,7 @@ public class TestItemDecoration extends RecyclerView.ItemDecoration {
     private int childWidth;
     private int childHeight;
     private int divider;
+
 
     public TestItemDecoration(int spanCount,int childWidth,int childHeight,int divider) {
         this.spanCount = spanCount;

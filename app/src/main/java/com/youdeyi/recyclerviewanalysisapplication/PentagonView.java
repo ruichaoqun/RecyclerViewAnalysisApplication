@@ -48,7 +48,7 @@ public class PentagonView extends androidx.appcompat.widget.AppCompatTextView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int width = MeasureSpec.getSize(widthMeasureSpec);
-        int height = (int) (Math.sin(2*Math.PI/3)*width);
+        int height = MeasureSpec.getSize(heightMeasureSpec);
         setMeasuredDimension(width,height);
     }
 

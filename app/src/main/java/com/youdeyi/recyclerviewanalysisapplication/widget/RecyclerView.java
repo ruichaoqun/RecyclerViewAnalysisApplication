@@ -3506,6 +3506,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView,
 
     @Override
     protected void onMeasure(int widthSpec, int heightSpec) {
+        Log.w(TAG,"onMeasure");
         if (mLayout == null) {
             //如果没有配置layoutManager,直接走defaultOnMeasure
             defaultOnMeasure(widthSpec, heightSpec);
@@ -4132,6 +4133,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView,
      * This step might be run multiple times if necessary (e.g. measure).
      */
     private void dispatchLayoutStep2() {
+        Log.w(TAG,"dispatchLayoutStep2");
         startInterceptRequestLayout();
         onEnterLayoutOrScroll();
         mState.assertLayoutStep(State.STEP_LAYOUT | State.STEP_ANIMATIONS);
@@ -4412,6 +4414,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView,
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         TraceCompat.beginSection(TRACE_ON_LAYOUT_TAG);
+        Log.w(TAG,"onLayout");
         dispatchLayout();
         TraceCompat.endSection();
         mFirstLayoutComplete = true;
