@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActionBar;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mRecyclerView = findViewById(R.id.recycler_view);
-        mRecyclerView.setLayoutManager(new TestLayoutManager(5));
+        mRecyclerView.setLayoutManager(new TestLayoutManager());
         mRecyclerView.setAdapter(new Adapter());
     }
 
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            Log.w("AAAA","onCreateViewHolder");
             PentagonView pentagonView = new PentagonView(MainActivity.this);
             pentagonView.setGravity(Gravity.CENTER);
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            Log.w("AAAA","onBindViewHolder--"+position);
             ((TextView)holder.itemView).setText(String.valueOf(position+1));
         }
 

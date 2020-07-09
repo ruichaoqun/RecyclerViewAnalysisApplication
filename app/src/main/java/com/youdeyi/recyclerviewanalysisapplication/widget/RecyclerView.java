@@ -8923,6 +8923,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView,
          */
         public void removeAndRecycleViewAt(int index, @NonNull Recycler recycler) {
             final View view = getChildAt(index);
+            Log.w("AAAA",getPosition(view)+"");
             removeViewAt(index);
             recycler.recycleView(view);
         }
